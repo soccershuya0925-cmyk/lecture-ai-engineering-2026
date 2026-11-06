@@ -1,0 +1,19 @@
+{
+  "name": "AIE2026 (kuro: ssh)",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "lts" },
+    "ghcr.io/devcontainers/features/sshd:1": { "version": "latest" }
+  },
+  "containerEnv": {
+    "PYDANTIC_AI_NO_BANNER": "1",
+    "UV_LINK_MODE": "copy"
+  },
+  "secrets": {
+    "GEMINI_API_KEY": {
+      "description": "Google AI Studio で発行した Gemini API キー",
+      "documentationUrl": "https://aistudio.google.com/apikey"
+    }
+  },
+  "postCreateCommand": "pipx install uv && uv sync --frozen"
+}
