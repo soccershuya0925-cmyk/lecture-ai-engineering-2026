@@ -1,0 +1,24 @@
+[model] gemini-3.5-flash-lite
+講座の用語集によると、LoRAとQLoRAの違いは以下のようになります。
+
+* **LoRA（Low-Rank Adaptation）**
+  事前学習済みの重みは固定したまま、重みの更新分を2つの小さな行列の積（低ランク行列）で表し、その小さな行列だけを学習するPEFT（Parameter-Efficient Fine-Tuning）手法です。学習するパラメータが少なく、アダプタと呼ばれる小さなファイルで保存できます。
+
+* **QLoRA（Quantized LoRA）**
+  ベースモデルの重みを4ビットなどに**量子化してメモリを節約したうえで、LoRAで学習する手法**です。これによって、より大きなモデルを小さなGPU環境でも扱えるようになります。
+
+---
+
+それでは、本日の確認問題です！
+
+**【確認問題】**
+「環境変数」の意味は？
+
+--- trace ---
+[tool call]   search_glossary({'query': 'LoRA'})
+[tool call]   search_glossary({'query': 'QLoRA'})
+[tool call]   make_quiz({'lecture': 1})
+[tool return] search_glossary -> [{"term": "LoRA", "lecture": 2, "definition": "事前学習済みの重みは固定したまま、重みの更新分を2つの小さな行列の積（低ランク行列）で表し、その小さな行列だけを学習するPEFT手法。学習するパラ…
+[tool return] search_glossary -> [{"term": "QLoRA", "lecture": 2, "definition": "ベースモデルの重みを4ビットなどに量子化してメモリを節約したうえで、LoRAで学習する手法。より大きなモデルを小さなGPUで扱える。本講座の第2…
+[tool return] make_quiz -> {"question": "「環境変数」の意味は？", "answer": "プログラムの外側（OSや実行環境）で設定し、プログラムから名前で読み出せる値。APIキーのような秘密情報や、環境ごとに変わる設定をコードから切り離すために使う。"…
+[usage] RunUsage(cost=Decimal('0.0010464'), details={'text_prompt_tokens': 1513}, input_text_tokens=1513, input_tokens=1513, output_tokens=237, requests=2, tool_calls=3)

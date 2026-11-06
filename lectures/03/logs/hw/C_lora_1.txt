@@ -1,0 +1,25 @@
+[model] gemini-3.5-flash-lite
+LoRAとQLoRAの違いは、ベースモデルの重みをそのまま使うか、量子化してメモリをさらに節約するかにあります。
+
+* **LoRA（Low-Rank Adaptation）**
+  事前学習済みの重みを固定したまま、重みの更新分を2つの小さな行列（低ランク行列）の積で表し、その小さな行列だけを学習するPEFT（Parameter-Efficient Fine-Tuning）手法です。学習するパラメータが少なく、アダプタのファイルサイズも小さくなります。
+* **QLoRA（Quantized LoRA）**
+  ベースモデルの重みを4ビットなどに**量子化**してメモリを大幅に節約したうえで、LoRAによるファインチューニングを行う手法です。これにより、より大きなモデルを小さなGPUでも効率よく扱えるようになります。
+
+（本講座の第2回では、これらの仕組みや違いについて詳しく扱います。）
+
+---
+
+**【今日の確認問題】**
+第1回の範囲から出題します：
+
+「トークン」の意味は何ですか？
+
+--- trace ---
+[tool call]   search_glossary({'query': 'LoRA'})
+[tool call]   search_glossary({'query': 'QLoRA'})
+[tool call]   make_quiz({'lecture': 1})
+[tool return] search_glossary -> [{"term": "LoRA", "lecture": 2, "definition": "事前学習済みの重みは固定したまま、重みの更新分を2つの小さな行列の積（低ランク行列）で表し、その小さな行列だけを学習するPEFT手法。学習するパラ…
+[tool return] search_glossary -> [{"term": "QLoRA", "lecture": 2, "definition": "ベースモデルの重みを4ビットなどに量子化してメモリを節約したうえで、LoRAで学習する手法。より大きなモデルを小さなGPUで扱える。本講座の第2…
+[tool return] make_quiz -> {"question": "「トークン」の意味は？", "answer": "LLMがテキストを扱う最小単位。単語や文字の断片に分割される。APIの料金、レート制限、コンテキストウィンドウの大きさは、多くの場合トークン数で数える。日本語は英…
+[usage] RunUsage(cost=Decimal('0.0011459'), details={'text_prompt_tokens': 1528}, input_text_tokens=1528, input_tokens=1528, output_tokens=275, requests=2, tool_calls=3)
